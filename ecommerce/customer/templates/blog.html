@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block main %}
+
+
+    <!-- section start -->
+    <section class="section-b-space blog-page ratio2_3">
+        <div class="container">
+            <div class="row">
+<!-- Blog sidebar start -->
+<div class="col-xl-3 col-lg-4 col-md-5">
+    <div class="blog-sidebar">
+        <div class="theme-card">
+            <h4> Blog</h4>
+            <ul class="recent-blog">
+                {% for post in recent_posts %}
+                <li>
+                    <div class="media">
+                        <img class="img-fluid blur-up lazyload" src="{{ post.image.url }}" alt="Generic placeholder image">
+                        <div class="media-body align-self-center">
+                            <h6>{{ post.created_at|date:"d M Y" }}</h6>
+                            <p>{{ post.title }}</p>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Blog sidebar end -->
+
+
+        
+                <!--Blog sidebar start-->
+                <!--Blog List start-->
+                <div class="col-xl-9 col-lg-8 col-md-7 order-sec">
+                    <div class="row blog-media">
+                        {% for post in recent_posts %}
+                        <div class="col-xl-6">
+                            <div class="blog-left">
+                                <a href="#"><img src="{{ post.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ post.description }}"></a>
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% for post in all_posts %}
+                        <div class="col-xl-6">
+                            <div class="blog-left">
+                                <a href="#"><img src="{{ post.image.url }}" class="img-fluid blur-up lazyload bg-img" alt="{{ post.description }}"></a>
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+                        
+               
+                </div>
+                <!--Blog List start-->
+            </div>
+        </div>
+    </section>
+    <!-- Section ends -->
+
+
+
+
+{% endblock main %}
+
+
+
+
+
+
+
+
+
