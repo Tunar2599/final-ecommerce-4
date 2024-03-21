@@ -1,9 +1,9 @@
 from django.shortcuts import render,redirect
 from customer.forms import ContactForm, RegisterForm
-from django.contrib.auth import login,authenticate
-from django.contrib.auth import logout
+from django.contrib.auth import login,logout,authenticate
 from .models import BlogPost
 from .models import Post
+
 
 
 
@@ -42,11 +42,11 @@ def login_view(request):
 
         if user:
             login(request, user)
-            return redirect('shop:home')  
-        else:
-            return render(request, 'login.html', {'fail': True})
+            return redirect('shop:home')
 
-    return render(request, 'login.html')
+        return redirect('shop:home')  
+
+    return render(request, 'login.html', {'fail': True})
 
 
 def logout_view(request):
@@ -60,3 +60,7 @@ def blog(request):
     all_posts = Post.objects.all()
     context = {'recent_posts': recent_posts, 'all_posts': all_posts}
     return render(request, 'blog.html', context)
+
+
+
+
