@@ -282,21 +282,22 @@
                             <li class="onhover-dropdown mobile-account">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <a class="dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    {% if request.user.is_authenticated %}
-                                        My Account
-                                    {% else %}
-                                        Giris edin 
-                                    {% endif %}
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="accountDropdown">
-                                    {% if request.user.is_authenticated %}
-                                      <li><a class="dropdown-item" href="{% url 'customer:login' %}">Login</a></li>
-
-                                    {% else %}
-                                     <li><a class="dropdown-item" href="{% url 'customer:logout' %}">Logout</a></li>
-
-                                        <li><a class="dropdown-item" href="{% url 'customer:register' %}">Register</a></li>
-                                    {% endif %}
+                                    <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        {% if request.user.is_authenticated %}
+                                            Tunar
+                                        {% else %}
+                                            Giriş Yap
+                                        {% endif %}
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                                        {% if request.user.is_authenticated %}
+                                            <li><a class="dropdown-item" href="{% url 'customer:logout' %}">Çıkış Yap</a></li>
+                                        {% else %}
+                                            <li><a class="dropdown-item" href="{% url 'customer:login' %}">Giriş Yap</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'customer:register' %}">Kayıt Ol</a></li>
+                                        {% endif %}
+                                    </ul>
+                                    
                                 </ul>
                             </li>
                         </ul>

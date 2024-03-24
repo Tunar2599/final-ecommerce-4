@@ -64,31 +64,36 @@
         </div>
         <form method='POST'>
             {% csrf_token %}
-            <div class="control-group">
-                {{form.name}}
-                {% for error in form.name.error %}
-                <p class=" text-danger">{{error}}</p>
-                {% endfor %}
-            </div>
-            <div class="control-group">
-              {{form.email}}
-              {% for error in form.email.error %}
-              <p class=" text-danger">{{error}}</p>
-              {% endfor %}
-            </div>
-            <div class="control-group">
-              {{form.subject}}
-              {% for error in form.subject.error %}
-              <p class=" text-danger">{{error}}</p>
-              {% endfor %}
-            </div>
-            <div class="control-group">
-               {{form.message}}
-               {% for error in form.message.error %}
-              <p class=" text-danger">{{error}}</p>
-              {% endfor %}
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="control-group">
+                        {{ form.name }}
+                        {% for error in form.name.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="control-group">
+                        {{ form.email }}
+                        {% for error in form.email.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
                 </div>
-                <div class="col-md-12">
+                <div class="col-md-6">
+                    <div class="control-group">
+                        {{ form.subject }}
+                        {% for error in form.subject.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="control-group">
+                        {{ form.message }}
+                        {% for error in form.message.errors %}
+                        <p class="text-danger">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-12 mt-3">
                     <button class="btn btn-solid" type="submit">Send Your Message</button>
                 </div>
             </div>

@@ -33,20 +33,20 @@ def register(request):
 
 
 
-
 def login_view(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
 
-        if user:
+        if user is not None:  # Kullanıcı doğrulanmışsa
             login(request, user)
-            return redirect('shop:home')
+            return redirect('shop:home')  # Ana sayfaya yönlendir
+        else:
+           return render(request, 'login.html', {'fail': True}) # Yanlış giriş durumunda da ana sayfaya yönlendir
 
-        return redirect('shop:home')  
+    return render(request, 'login.html')
 
-    return render(request, 'login.html', {'fail': True})
 
 
 def logout_view(request):
@@ -60,7 +60,5 @@ def blog(request):
     all_posts = Post.objects.all()
     context = {'recent_posts': recent_posts, 'all_posts': all_posts}
     return render(request, 'blog.html', context)
-
-
 
 

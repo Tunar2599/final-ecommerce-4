@@ -8,10 +8,10 @@ class ContactForm(forms.ModelForm):
         model = Contact
         fields = '__all__'
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control mb-4', 'placeholder': 'Your name'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control mb-4', 'placeholder': 'Your Email'}),
-            'subject': forms.TextInput(attrs={'class': 'form-control mb-4', 'placeholder': 'Subject'}),
-            'message': forms.Textarea(attrs={'class': 'form-control mb-4', 'placeholder': 'Message', 'rows': '8'}),
+            'name': forms.TextInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Your name'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Your Email'}),
+            'subject': forms.TextInput(attrs={'class': 'form-control mb-2', 'placeholder': 'Subject'}),
+            'message': forms.Textarea(attrs={'class': 'form-control mb-2', 'placeholder': 'Message', 'rows': '8'}),
         }
 
 
@@ -66,6 +66,7 @@ class RegisterForm(forms.Form):
         new_user.save()
         customer = Customer.objects.create(user=new_user)
         return customer
+
 
 
 
