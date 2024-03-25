@@ -39,13 +39,12 @@ def login_view(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
 
-        if user is not None:  # Kullanıcı doğrulanmışsa
+        if user:
             login(request, user)
-            return redirect('shop:home')  # Ana sayfaya yönlendir
-        else:
-           return render(request, 'login.html', {'fail': True}) # Yanlış giriş durumunda da ana sayfaya yönlendir
+            return redirect('shop:home')  
 
-    return render(request, 'login.html')
+    return render(request, 'login.html', {'fail': True})
+
 
 
 
